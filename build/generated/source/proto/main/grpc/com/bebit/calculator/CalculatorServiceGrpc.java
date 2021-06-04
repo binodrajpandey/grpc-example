@@ -45,6 +45,99 @@ public final class CalculatorServiceGrpc {
     return getSumMethod;
   }
 
+  private static volatile io.grpc.MethodDescriptor<com.bebit.calculator.TableRequest,
+      com.bebit.calculator.TableResponse> getGetTableMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "getTable",
+      requestType = com.bebit.calculator.TableRequest.class,
+      responseType = com.bebit.calculator.TableResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+  public static io.grpc.MethodDescriptor<com.bebit.calculator.TableRequest,
+      com.bebit.calculator.TableResponse> getGetTableMethod() {
+    io.grpc.MethodDescriptor<com.bebit.calculator.TableRequest, com.bebit.calculator.TableResponse> getGetTableMethod;
+    if ((getGetTableMethod = CalculatorServiceGrpc.getGetTableMethod) == null) {
+      synchronized (CalculatorServiceGrpc.class) {
+        if ((getGetTableMethod = CalculatorServiceGrpc.getGetTableMethod) == null) {
+          CalculatorServiceGrpc.getGetTableMethod = getGetTableMethod =
+              io.grpc.MethodDescriptor.<com.bebit.calculator.TableRequest, com.bebit.calculator.TableResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.SERVER_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "getTable"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bebit.calculator.TableRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bebit.calculator.TableResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CalculatorServiceMethodDescriptorSupplier("getTable"))
+              .build();
+        }
+      }
+    }
+    return getGetTableMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.bebit.calculator.ComputeRequest,
+      com.bebit.calculator.ComputeResponse> getComputeAverageMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "computeAverage",
+      requestType = com.bebit.calculator.ComputeRequest.class,
+      responseType = com.bebit.calculator.ComputeResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+  public static io.grpc.MethodDescriptor<com.bebit.calculator.ComputeRequest,
+      com.bebit.calculator.ComputeResponse> getComputeAverageMethod() {
+    io.grpc.MethodDescriptor<com.bebit.calculator.ComputeRequest, com.bebit.calculator.ComputeResponse> getComputeAverageMethod;
+    if ((getComputeAverageMethod = CalculatorServiceGrpc.getComputeAverageMethod) == null) {
+      synchronized (CalculatorServiceGrpc.class) {
+        if ((getComputeAverageMethod = CalculatorServiceGrpc.getComputeAverageMethod) == null) {
+          CalculatorServiceGrpc.getComputeAverageMethod = getComputeAverageMethod =
+              io.grpc.MethodDescriptor.<com.bebit.calculator.ComputeRequest, com.bebit.calculator.ComputeResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.CLIENT_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "computeAverage"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bebit.calculator.ComputeRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bebit.calculator.ComputeResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CalculatorServiceMethodDescriptorSupplier("computeAverage"))
+              .build();
+        }
+      }
+    }
+    return getComputeAverageMethod;
+  }
+
+  private static volatile io.grpc.MethodDescriptor<com.bebit.calculator.FindMaximumRequest,
+      com.bebit.calculator.FindMaximumResponse> getFindMaximumMethod;
+
+  @io.grpc.stub.annotations.RpcMethod(
+      fullMethodName = SERVICE_NAME + '/' + "findMaximum",
+      requestType = com.bebit.calculator.FindMaximumRequest.class,
+      responseType = com.bebit.calculator.FindMaximumResponse.class,
+      methodType = io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+  public static io.grpc.MethodDescriptor<com.bebit.calculator.FindMaximumRequest,
+      com.bebit.calculator.FindMaximumResponse> getFindMaximumMethod() {
+    io.grpc.MethodDescriptor<com.bebit.calculator.FindMaximumRequest, com.bebit.calculator.FindMaximumResponse> getFindMaximumMethod;
+    if ((getFindMaximumMethod = CalculatorServiceGrpc.getFindMaximumMethod) == null) {
+      synchronized (CalculatorServiceGrpc.class) {
+        if ((getFindMaximumMethod = CalculatorServiceGrpc.getFindMaximumMethod) == null) {
+          CalculatorServiceGrpc.getFindMaximumMethod = getFindMaximumMethod =
+              io.grpc.MethodDescriptor.<com.bebit.calculator.FindMaximumRequest, com.bebit.calculator.FindMaximumResponse>newBuilder()
+              .setType(io.grpc.MethodDescriptor.MethodType.BIDI_STREAMING)
+              .setFullMethodName(generateFullMethodName(SERVICE_NAME, "findMaximum"))
+              .setSampledToLocalTracing(true)
+              .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bebit.calculator.FindMaximumRequest.getDefaultInstance()))
+              .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
+                  com.bebit.calculator.FindMaximumResponse.getDefaultInstance()))
+              .setSchemaDescriptor(new CalculatorServiceMethodDescriptorSupplier("findMaximum"))
+              .build();
+        }
+      }
+    }
+    return getFindMaximumMethod;
+  }
+
   /**
    * Creates a new async stub that supports all call types for the service
    */
@@ -103,6 +196,36 @@ public final class CalculatorServiceGrpc {
       io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getSumMethod(), responseObserver);
     }
 
+    /**
+     * <pre>
+     *server streaming
+     * </pre>
+     */
+    public void getTable(com.bebit.calculator.TableRequest request,
+        io.grpc.stub.StreamObserver<com.bebit.calculator.TableResponse> responseObserver) {
+      io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall(getGetTableMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *client streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.bebit.calculator.ComputeRequest> computeAverage(
+        io.grpc.stub.StreamObserver<com.bebit.calculator.ComputeResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getComputeAverageMethod(), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *bi-directional streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.bebit.calculator.FindMaximumRequest> findMaximum(
+        io.grpc.stub.StreamObserver<com.bebit.calculator.FindMaximumResponse> responseObserver) {
+      return io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall(getFindMaximumMethod(), responseObserver);
+    }
+
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
@@ -112,6 +235,27 @@ public final class CalculatorServiceGrpc {
                 com.bebit.calculator.SumRequest,
                 com.bebit.calculator.SumResponse>(
                   this, METHODID_SUM)))
+          .addMethod(
+            getGetTableMethod(),
+            io.grpc.stub.ServerCalls.asyncServerStreamingCall(
+              new MethodHandlers<
+                com.bebit.calculator.TableRequest,
+                com.bebit.calculator.TableResponse>(
+                  this, METHODID_GET_TABLE)))
+          .addMethod(
+            getComputeAverageMethod(),
+            io.grpc.stub.ServerCalls.asyncClientStreamingCall(
+              new MethodHandlers<
+                com.bebit.calculator.ComputeRequest,
+                com.bebit.calculator.ComputeResponse>(
+                  this, METHODID_COMPUTE_AVERAGE)))
+          .addMethod(
+            getFindMaximumMethod(),
+            io.grpc.stub.ServerCalls.asyncBidiStreamingCall(
+              new MethodHandlers<
+                com.bebit.calculator.FindMaximumRequest,
+                com.bebit.calculator.FindMaximumResponse>(
+                  this, METHODID_FIND_MAXIMUM)))
           .build();
     }
   }
@@ -140,6 +284,39 @@ public final class CalculatorServiceGrpc {
       io.grpc.stub.ClientCalls.asyncUnaryCall(
           getChannel().newCall(getSumMethod(), getCallOptions()), request, responseObserver);
     }
+
+    /**
+     * <pre>
+     *server streaming
+     * </pre>
+     */
+    public void getTable(com.bebit.calculator.TableRequest request,
+        io.grpc.stub.StreamObserver<com.bebit.calculator.TableResponse> responseObserver) {
+      io.grpc.stub.ClientCalls.asyncServerStreamingCall(
+          getChannel().newCall(getGetTableMethod(), getCallOptions()), request, responseObserver);
+    }
+
+    /**
+     * <pre>
+     *client streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.bebit.calculator.ComputeRequest> computeAverage(
+        io.grpc.stub.StreamObserver<com.bebit.calculator.ComputeResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncClientStreamingCall(
+          getChannel().newCall(getComputeAverageMethod(), getCallOptions()), responseObserver);
+    }
+
+    /**
+     * <pre>
+     *bi-directional streaming
+     * </pre>
+     */
+    public io.grpc.stub.StreamObserver<com.bebit.calculator.FindMaximumRequest> findMaximum(
+        io.grpc.stub.StreamObserver<com.bebit.calculator.FindMaximumResponse> responseObserver) {
+      return io.grpc.stub.ClientCalls.asyncBidiStreamingCall(
+          getChannel().newCall(getFindMaximumMethod(), getCallOptions()), responseObserver);
+    }
   }
 
   /**
@@ -164,6 +341,17 @@ public final class CalculatorServiceGrpc {
     public com.bebit.calculator.SumResponse sum(com.bebit.calculator.SumRequest request) {
       return io.grpc.stub.ClientCalls.blockingUnaryCall(
           getChannel(), getSumMethod(), getCallOptions(), request);
+    }
+
+    /**
+     * <pre>
+     *server streaming
+     * </pre>
+     */
+    public java.util.Iterator<com.bebit.calculator.TableResponse> getTable(
+        com.bebit.calculator.TableRequest request) {
+      return io.grpc.stub.ClientCalls.blockingServerStreamingCall(
+          getChannel(), getGetTableMethod(), getCallOptions(), request);
     }
   }
 
@@ -194,6 +382,9 @@ public final class CalculatorServiceGrpc {
   }
 
   private static final int METHODID_SUM = 0;
+  private static final int METHODID_GET_TABLE = 1;
+  private static final int METHODID_COMPUTE_AVERAGE = 2;
+  private static final int METHODID_FIND_MAXIMUM = 3;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -216,6 +407,10 @@ public final class CalculatorServiceGrpc {
           serviceImpl.sum((com.bebit.calculator.SumRequest) request,
               (io.grpc.stub.StreamObserver<com.bebit.calculator.SumResponse>) responseObserver);
           break;
+        case METHODID_GET_TABLE:
+          serviceImpl.getTable((com.bebit.calculator.TableRequest) request,
+              (io.grpc.stub.StreamObserver<com.bebit.calculator.TableResponse>) responseObserver);
+          break;
         default:
           throw new AssertionError();
       }
@@ -226,6 +421,12 @@ public final class CalculatorServiceGrpc {
     public io.grpc.stub.StreamObserver<Req> invoke(
         io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
+        case METHODID_COMPUTE_AVERAGE:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.computeAverage(
+              (io.grpc.stub.StreamObserver<com.bebit.calculator.ComputeResponse>) responseObserver);
+        case METHODID_FIND_MAXIMUM:
+          return (io.grpc.stub.StreamObserver<Req>) serviceImpl.findMaximum(
+              (io.grpc.stub.StreamObserver<com.bebit.calculator.FindMaximumResponse>) responseObserver);
         default:
           throw new AssertionError();
       }
@@ -278,6 +479,9 @@ public final class CalculatorServiceGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new CalculatorServiceFileDescriptorSupplier())
               .addMethod(getSumMethod())
+              .addMethod(getGetTableMethod())
+              .addMethod(getComputeAverageMethod())
+              .addMethod(getFindMaximumMethod())
               .build();
         }
       }
