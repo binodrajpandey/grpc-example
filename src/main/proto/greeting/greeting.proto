@@ -1,0 +1,18 @@
+syntax = "proto3";
+package greeting;
+
+option java_package = "com.bebit.greeting";
+option java_multiple_files = true;
+
+message GreetWithDeadlineRequest {
+  string first_name = 1;
+}
+
+message GreetWithDeadlineResponse {
+  string response = 1;
+}
+
+service GreetingService {
+  //rpc with deadline
+  rpc greetWithDeadline(GreetWithDeadlineRequest) returns (GreetWithDeadlineResponse) {};
+}
