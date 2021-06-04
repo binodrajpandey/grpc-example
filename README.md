@@ -2,7 +2,9 @@
 https://github.com/grpc/grpc-java
 
 ## How to run project from IDEA
-1. Import project and reload project from the Gradle plugin on the right
+1. Import project on the IDEA
+1. Right click on the build.gradle and import gradle project
+1. Reload project from the Gradle plugin on the right
 1. Generate Proto (`gradle generateProto`)
 1. Run server
 1. Run client
