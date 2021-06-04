@@ -61,6 +61,5 @@ service CalculatorService {
 
   //error handling
   rpc squareRoot(SquareRootRequest) returns (SquareRootResponse) {};
-
 }
 

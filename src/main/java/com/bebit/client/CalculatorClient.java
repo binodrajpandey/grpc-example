@@ -27,6 +27,10 @@ public class CalculatorClient {
     ManagedChannel channel =
         ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
     new CalculatorClient().main(channel);
+    new GreetingClient().doUnaryCallWithDeadline(channel);
+
+    System.out.println("Shutting down channel....");
+    channel.shutdown();
   }
 
   public void main(ManagedChannel channel) {
@@ -35,8 +39,7 @@ public class CalculatorClient {
     doClientStreamingCall(channel);
     doBiDirectionalStreaming(channel);
     doErrorCall(channel);
-    System.out.println("Shutting down channel....");
-    channel.shutdown();
+
   }
 
   private void doUnaryCall(ManagedChannel channel) {
