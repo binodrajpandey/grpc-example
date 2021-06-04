@@ -7,3 +7,6 @@ https://github.com/grpc/grpc-java
 1. Run server
 1. Run client
 
+## Status code reference
+https://grpc.github.io/grpc/core/md_doc_statuscodes.html
+

@@ -5,10 +5,13 @@ import com.bebit.calculator.ComputeRequest;
 import com.bebit.calculator.ComputeResponse;
 import com.bebit.calculator.FindMaximumRequest;
 import com.bebit.calculator.FindMaximumResponse;
+import com.bebit.calculator.SquareRootRequest;
+import com.bebit.calculator.SquareRootResponse;
 import com.bebit.calculator.SumRequest;
 import com.bebit.calculator.SumResponse;
 import com.bebit.calculator.TableRequest;
 import com.bebit.calculator.TableResponse;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 
 public class CalculatorServiceImpl extends CalculatorServiceImplBase {
@@ -91,7 +94,6 @@ public class CalculatorServiceImpl extends CalculatorServiceImplBase {
         } catch (Exception exception) {
           exception.getStackTrace();
         }
-
       }
 
       @Override
@@ -108,4 +110,5 @@ public class CalculatorServiceImpl extends CalculatorServiceImplBase {
       }
     };
   }
+
 }

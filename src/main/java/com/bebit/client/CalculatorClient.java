@@ -7,11 +7,14 @@ import com.bebit.calculator.ComputeRequest;
 import com.bebit.calculator.ComputeResponse;
 import com.bebit.calculator.FindMaximumRequest;
 import com.bebit.calculator.FindMaximumResponse;
+import com.bebit.calculator.SquareRootRequest;
+import com.bebit.calculator.SquareRootResponse;
 import com.bebit.calculator.SumRequest;
 import com.bebit.calculator.SumResponse;
 import com.bebit.calculator.TableRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
+import io.grpc.StatusRuntimeException;
 import io.grpc.stub.StreamObserver;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
@@ -26,10 +29,10 @@ public class CalculatorClient {
   }
 
   public void main(ManagedChannel channel) {
-    doUnaryCall(channel);
-    doServerStreamingCall(channel);
-    doClientStreamingCall(channel);
-    doBiDirectionalStreaming(channel);
+        doUnaryCall(channel);
+        doServerStreamingCall(channel);
+        doClientStreamingCall(channel);
+        doBiDirectionalStreaming(channel);
     System.out.println("Shutting down channel....");
     channel.shutdown();
   }
@@ -133,7 +136,7 @@ public class CalculatorClient {
     Arrays.asList(4, 6, 1, 12, 32, 21, 1, 33, 12, 25)
         .forEach(
             value -> {
-              System.out.println("sending value"+ value);
+              System.out.println("sending value" + value);
               findMaximumRequestStreamObserver.onNext(
                   FindMaximumRequest.newBuilder().setNumber(value).build());
               try {
@@ -149,4 +152,5 @@ public class CalculatorClient {
       e.printStackTrace();
     }
   }
+
 }
