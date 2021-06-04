@@ -21,6 +21,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 public class CalculatorClient {
+
   public static void main(String[] args) {
     System.out.println("Hello, I am gRPC client");
     ManagedChannel channel =
@@ -29,10 +30,11 @@ public class CalculatorClient {
   }
 
   public void main(ManagedChannel channel) {
-        doUnaryCall(channel);
-        doServerStreamingCall(channel);
-        doClientStreamingCall(channel);
-        doBiDirectionalStreaming(channel);
+    doUnaryCall(channel);
+    doServerStreamingCall(channel);
+    doClientStreamingCall(channel);
+    doBiDirectionalStreaming(channel);
+    doErrorCall(channel);
     System.out.println("Shutting down channel....");
     channel.shutdown();
   }
@@ -83,7 +85,8 @@ public class CalculatorClient {
               }
 
               @Override
-              public void onError(Throwable t) {}
+              public void onError(Throwable t) {
+              }
 
               @Override
               public void onCompleted() {
@@ -153,4 +156,22 @@ public class CalculatorClient {
     }
   }
 
+  private void doErrorCall(ManagedChannel channel) {
+    System.out.println("callinig remote");
+    CalculatorServiceBlockingStub calculatorServiceBlockingStub =
+        CalculatorServiceGrpc.newBlockingStub(channel);
+    try {
+      SquareRootRequest squareRootRequest = SquareRootRequest.newBuilder().setNumber(16).build();
+      SquareRootResponse response = calculatorServiceBlockingStub.squareRoot(squareRootRequest);
+      System.out.println(
+          "Square root of " + squareRootRequest.getNumber() + " is " + response.getSquareRoot());
+      squareRootRequest = SquareRootRequest.newBuilder().setNumber(-1).build();
+      response = calculatorServiceBlockingStub.squareRoot(squareRootRequest);
+      System.out.println(
+          "Square root of " + squareRootRequest.getNumber() + " is " + response.getSquareRoot());
+
+    } catch (StatusRuntimeException statusRuntimeException) {
+      statusRuntimeException.printStackTrace();
+    }
+  }
 }

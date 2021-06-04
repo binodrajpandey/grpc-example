@@ -111,4 +111,22 @@ public class CalculatorServiceImpl extends CalculatorServiceImplBase {
     };
   }
 
+  @Override
+  public void squareRoot(SquareRootRequest request,
+      StreamObserver<SquareRootResponse> responseObserver) {
+    System.out.println("request arrived");
+    int number = request.getNumber();
+    if (number >= 0) {
+      double rootNumber = Math.sqrt(number);
+      responseObserver.onNext(SquareRootResponse.newBuilder().setSquareRoot(rootNumber).build());
+      responseObserver.onCompleted();
+    } else {
+      // Construct exception.
+      responseObserver.onError(
+          Status.INVALID_ARGUMENT
+              .withDescription(
+                  "The number " + number + " client sent is negative. It should be Positive")
+              .asRuntimeException());
+    }
+  }
 }
