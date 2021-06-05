@@ -12,3 +12,8 @@ https://github.com/grpc/grpc-java
 ## Status code reference
 https://grpc.github.io/grpc/core/md_doc_statuscodes.html
 
+## Command to set up ssl
+Run the instruction.sh with the following command
+```
+./instruction.sh
+```
