@@ -15,17 +15,25 @@ import com.bebit.calculator.TableRequest;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import io.grpc.StatusRuntimeException;
+import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
+import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
 import io.grpc.stub.StreamObserver;
+import java.io.File;
 import java.util.Arrays;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
+import javax.net.ssl.SSLException;
 
 public class CalculatorClient {
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws SSLException {
     System.out.println("Hello, I am gRPC client");
     ManagedChannel channel =
-        ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
+        //For plain text
+        // ManagedChannelBuilder.forAddress("localhost", 50051).usePlaintext().build();
+        NettyChannelBuilder.forAddress("localhost", 50051)
+            .sslContext(GrpcSslContexts.forClient().trustManager(new File("ssl/ca.crt")).build())
+            .build();
     new CalculatorClient().main(channel);
     new GreetingClient().doUnaryCallWithDeadline(channel);
 
@@ -39,7 +47,6 @@ public class CalculatorClient {
     doClientStreamingCall(channel);
     doBiDirectionalStreaming(channel);
     doErrorCall(channel);
-
   }
 
   private void doUnaryCall(ManagedChannel channel) {
@@ -88,8 +95,7 @@ public class CalculatorClient {
               }
 
               @Override
-              public void onError(Throwable t) {
-              }
+              public void onError(Throwable t) {}
 
               @Override
               public void onCompleted() {
